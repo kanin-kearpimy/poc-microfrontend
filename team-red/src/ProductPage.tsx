@@ -21,6 +21,10 @@ export const ProductPage: React.FC<ProductPageProps> = ({ name, history, BasketI
   return (
     variant && (
       <>
+        <div id="menu">
+          <li><Link to="/yellow">Shared component (extension)</Link></li>
+          <li><Link to="/state">State Management</Link></li>
+        </div>
         <h1 id="store">The Model Store</h1>
         <BasketInfo />
         <div id="image">
@@ -42,7 +46,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ name, history, BasketI
             </button>
           ))}
         </div>
-        <Link to="/yellow">Yellow Page</Link>
         <BuyButton item={variant.sku} />
         <Recommendations item={variant.sku} />
       </>

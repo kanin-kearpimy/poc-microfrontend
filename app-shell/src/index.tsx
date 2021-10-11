@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Redirect } from 'react-router-dom';
-import { createPiral, PiletMetadata, Piral, SetRoute } from 'piral';
+import { createPiral, PiletMetadata, Piral, renderInstance, SetRoute } from 'piral';
 import { createContainersApi } from 'piral-containers';
 import { TestPage } from './TestPage';
+import { layout } from './layout';
 
 function createCustomeApi () {
   return context => {
@@ -12,6 +13,7 @@ function createCustomeApi () {
     });
   };
 }
+
 const piral = createPiral({
   requestPilets() {
     return fetch('http://localhost:9000/api/v1/pilet')
@@ -22,12 +24,11 @@ const piral = createPiral({
   extendApi: [createContainersApi()],
 });
 
-piral.root.setData('setSomething', 'Something Data');
+piral.root.setData('app-shell-set-data', 'APP SHELL set data.');
 
 const app = (
   <Piral instance={piral}>
     <SetRoute path="/" component={() => <Redirect from="/" to="/products" />} />
-    <TestPage />
   </Piral>
 );
 

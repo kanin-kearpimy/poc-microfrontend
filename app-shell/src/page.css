@@ -33,9 +33,15 @@ dd {
   min-width: 500px;
 }
 
+#menu li{
+  display: inline-block;
+  margin-right: 12px;
+}
+
 @media only screen and (max-width: 999px) {
   #app {
     grid-template-areas:
+      "menu menu"
       "store basket"
       "image name"
       "image options"
@@ -48,6 +54,7 @@ dd {
 @media only screen and (min-width: 1000px) {
   #app {
     grid-template-areas:
+      "menu menu menu"
       "store basket  reco"
       "image name    reco"
       "image options reco"

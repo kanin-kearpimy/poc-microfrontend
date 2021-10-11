@@ -2,19 +2,10 @@ import * as React from 'react';
 import { PiletApi } from 'app-shell';
 import { YellowPage } from './YellowPage';
 
-var globalvalue:Number; 
 var piral_data:String;
 
 export function setup(app: PiletApi) {
-  globalvalue = app.getData('some-data');
-  piral_data = app.getData('setSomething');
-
-  app.on('store-data', ({ name, value }) => {
-    if (name === 'some-data') {
-      globalvalue = value;
-    }
-  });
-
+  piral_data = app.getData('app-shell-set-data');
   app.showNotification('Hello from Piral!', {
     autoClose: 2000,
   });
@@ -30,7 +21,7 @@ export function setup(app: PiletApi) {
 
   app.registerPage('/yellow', ({ piral }) => {
     return(
-      <><YellowPage BasketInfo={() => <piral.Extension name="basket-info" />} /> { globalvalue } - { piral_data } </>
+      <><YellowPage BasketInfo={() => <piral.Extension name="basket-info" />} /></>
     )
   });
 
@@ -62,6 +53,7 @@ export function setup(app: PiletApi) {
           <button onClick={actions.increment}>Increase</button>
           <button onClick={actions.decrement}>Decrease</button>
         </div>
+        <div>APPSHELL set data: {piral_data}</div>
       </>
     )
   }))
