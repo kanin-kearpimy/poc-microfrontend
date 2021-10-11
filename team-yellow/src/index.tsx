@@ -38,4 +38,36 @@ export function setup(app: PiletApi) {
       <><YellowPage BasketInfo={() => <piral.Extension name="basket-info" />} /> { globalvalue } - { piral_data } </>
     )
   });
+
+  const connect = app.createState({
+    state: {
+      count: 0,
+    },
+    actions: {
+      increment(dispatch) {
+        dispatch(state => ({
+          count: state.count + 1,
+        }));
+      },
+      decrement(dispatch) {
+        dispatch(state => ({
+          count: state.count - 1,
+        }));
+      },
+    },
+  });
+
+  app.registerPage('/state', connect(({state, actions}) => {
+    const mockTestData = app.mockTestData;
+    return(
+      <>
+        Global State: {mockTestData}
+        <div>
+          <h3>Counter: {state.count}</h3>
+          <button onClick={actions.increment}>Increase</button>
+          <button onClick={actions.decrement}>Decrease</button>
+        </div>
+      </>
+    )
+  }))
 }
