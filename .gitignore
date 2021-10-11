@@ -21,5 +21,3 @@ coverage
 reports
 .cache
 .nyc_output
-
-*-lock.json
