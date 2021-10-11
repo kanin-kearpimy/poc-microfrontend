@@ -6,16 +6,12 @@ var globalvalue:Number;
 var piral_data:String;
 
 export function setup(app: PiletApi) {
-  console.log("Yellow : ", app.getTranslations);
   globalvalue = app.getData('some-data');
   piral_data = app.getData('setSomething');
-  console.log(`Current value is "${globalvalue}"!`);
 
   app.on('store-data', ({ name, value }) => {
     if (name === 'some-data') {
-      console.log(`New value is "${value}"!`);
       globalvalue = value;
-      console.log(`Global value ${globalvalue}`);
     }
   });
 
@@ -33,7 +29,6 @@ export function setup(app: PiletApi) {
   });
 
   app.registerPage('/yellow', ({ piral }) => {
-    console.log("Piral : ", piral)
     return(
       <><YellowPage BasketInfo={() => <piral.Extension name="basket-info" />} /> { globalvalue } - { piral_data } </>
     )
