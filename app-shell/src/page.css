@@ -228,3 +228,15 @@ dd {
   outline: 3px dashed royalblue;
   padding: 5px;
 }
+
+.black-recos {
+  display: block;
+  outline: 3px dashed black;
+  width: 100%;
+}
+
+.yellow-recos {
+  display: block;
+  outline: 3px dashed yellow;
+  width: 100%;
+}
