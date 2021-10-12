@@ -54,6 +54,16 @@ export function setup(app: PiletApi) {
           countBySetData: app.getData('counter-data'),
         }));
       },
+      decreaseBySetData(dispatch) {
+        let tmp = app.getData('counter-data');
+        tmp--;
+        app.setData('counter-data', tmp);
+
+        dispatch((state) => ({
+          ...state,
+          countBySetData: app.getData('counter-data'),
+        }));
+      },
     },
   });
 
@@ -63,26 +73,25 @@ export function setup(app: PiletApi) {
       const mockTestData = app.mockTestData;
       return (
         <>
-        <div className="yellow-recos">
-          Global State: {mockTestData}
-        </div>
-        <div className="yellow-recos">        
-          <div>
-            <h3>Counter: {state.count}</h3>
-            <button onClick={actions.increment}>Increase</button>
-            <button onClick={actions.decrement}>Decrease</button>
+          <div className="yellow-recos">Global State: {mockTestData}</div>
+          <div className="yellow-recos">
+            <div>
+              <h3>Counter: {state.count}</h3>
+              <button onClick={actions.increment}>Increase</button>
+              <button onClick={actions.decrement}>Decrease</button>
+            </div>
           </div>
-        </div>
-        <div className="yellow-recos">
-          <div>APPSHELL set data: {piral_data}</div>
-        </div>
-        <div className="yellow-recos">
-          <div>Counter by setData: {state.countBySetData}</div>
-        </div>
-        <div className="yellow-recos">
-          <button onClick={actions.incrementBySetData}>Increase By SetData</button>
-        </div>
-        <piral.Extension name="black-layout" />
+          <div className="yellow-recos">
+            <div>APPSHELL set data: {piral_data}</div>
+          </div>
+          <div className="yellow-recos">
+            <div>Counter(Share data between module): {state.countBySetData}</div>
+          </div>
+          <div className="yellow-recos">
+            <button onClick={actions.incrementBySetData}>Increase</button>
+            <button onClick={actions.decreaseBySetData}>Decrease</button>
+          </div>
+          <piral.Extension name="black-layout" />
         </>
       );
     }),
