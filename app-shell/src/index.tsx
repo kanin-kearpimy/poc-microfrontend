@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { render } from 'react-dom';
-import { Redirect } from 'react-router-dom';
-import { createPiral, PiletMetadata, Piral, SetRoute, useActions, GlobalStateContext, renderInstance } from 'piral';
+import { PiletMetadata, useActions, GlobalStateContext, renderInstance } from 'piral';
 import { createContainersApi } from 'piral-containers';
-import { layout, errors } from './layout';
+import { layout } from './layout';
 
 function createCustomeApi () {
   return context => {
