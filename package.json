@@ -1,0 +1,16 @@
+{
+  "name": "piral-microfrontend-demo",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "pilet"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {},
+  "scripts": {},
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ]
+}

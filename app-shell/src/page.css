@@ -24,7 +24,7 @@ dd {
   margin: 0;
 }
 
-#app {
+.main-layout {
   display: grid;
   grid-column-gap: 20px;
   grid-gap: 20px;
@@ -33,13 +33,37 @@ dd {
   min-width: 500px;
 }
 
+#nav-menu {
+  width: 100%;
+  display: flex;
+  padding: 12px 100px 12px 100px;
+  border-radius: 6px;
+  border: 1px solid blueviolet;
+  justify-content: space-between;
+}
+
 #menu li{
   display: inline-block;
   margin-right: 12px;
 }
 
+#login-dialog {
+  width: 300px;
+  height: auto;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid blueviolet;
+}
+
+#login-dialog * {
+  margin: 8px;
+}
+
 @media only screen and (max-width: 999px) {
-  #app {
+  .main-layout {
     grid-template-areas:
       "menu menu"
       "store basket"
@@ -52,7 +76,7 @@ dd {
 }
 
 @media only screen and (min-width: 1000px) {
-  #app {
+  .main-layout {
     grid-template-areas:
       "menu menu menu"
       "store basket  reco"
@@ -206,9 +230,14 @@ dd {
   width: 180px;
 }
 
-#app {
+#red-layout-color {
   outline: 3px dashed orangered;
   padding: 15px;
+}
+
+.royalblue-border {
+  border: 1px solid blueviolet;
+  padding: 12px;
 }
 
 .green-recos {

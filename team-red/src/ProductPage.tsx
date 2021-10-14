@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export interface ProductPageProps {
   name: string;
   history: History;
+  userObj: Object;
   BuyButton: React.ComponentType<{
     item: string;
   }>;
@@ -15,16 +16,13 @@ export interface ProductPageProps {
   BasketInfo: React.ComponentType;
 }
 
-export const ProductPage: React.FC<ProductPageProps> = ({ name, history, BasketInfo, BuyButton, Recommendations }) => {
+export const ProductPage: React.FC<ProductPageProps> = ({ name, history, BasketInfo, BuyButton, Recommendations, userObj }) => {
   const [variant] = product.variants.filter((v) => name === v.sku);
-
+  const { username } = userObj;
   return (
     variant && (
-      <>
-        <div id="menu">
-          <li><Link to="/yellow">Shared component (extension)</Link></li>
-          <li><Link to="/state">State Management</Link></li>
-        </div>
+      <div id="red-layout-color" className="main-layout">
+        <h3>Welcome: {username}</h3>
         <h1 id="store">The Model Store</h1>
         <BasketInfo />
         <div id="image">
@@ -48,7 +46,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ name, history, BasketI
         </div>
         <BuyButton item={variant.sku} />
         <Recommendations item={variant.sku} />
-      </>
+      </div>
     )
   );
 };

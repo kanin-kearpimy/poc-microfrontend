@@ -72,7 +72,7 @@ export function setup(app: PiletApi) {
     connect(({ state, actions, piral }) => {
       const mockTestData = app.mockTestData;
       return (
-        <>
+        <div className="main-layout royalblue-border">
           <div className="yellow-recos">Global State: {mockTestData}</div>
           <div className="yellow-recos">
             <div>
@@ -92,7 +92,7 @@ export function setup(app: PiletApi) {
             <button onClick={actions.decreaseBySetData}>Decrease</button>
           </div>
           <piral.Extension name="black-layout" />
-        </>
+        </div>
       );
     }),
   );
